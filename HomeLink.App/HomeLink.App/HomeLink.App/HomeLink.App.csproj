@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <LangVersion>8.0</LangVersion>
+    <NullableContextOptions>enable</NullableContextOptions>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LinqFaster" Version="1.0.0" />
+    <PackageReference Include="Refit" Version="4.6.107" />
+    <PackageReference Include="SuaveControls.FloatingActionButton" Version="2018.1.5" />
+    <PackageReference Include="Xam.Plugin.FilePicker" Version="1.1.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.0.0.425677" />
+    <PackageReference Include="Prism.DryIoc.Forms" Version="7.2.0.1233-pre" />
+  </ItemGroup>
+
+</Project>
