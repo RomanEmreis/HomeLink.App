@@ -15,6 +15,7 @@ namespace HomeLink.App.ViewModels {
             _storedFiles     = new ObservableCollection<FileViewModel>();
 
             UploadCommand    = new DelegateCommand(OnUpload);
+            Title            = "Storage";
         }
 
         private ObservableCollection<FileViewModel> _storedFiles;
@@ -27,10 +28,11 @@ namespace HomeLink.App.ViewModels {
 
         private async void OnUpload() {
             var file = await CrossFilePicker.Current.PickFile();
-            if (!(file is null)) {
-                var fileView = new FileViewModel(file.FileName, file.DataArray);
-                await _homeLinkService.UploadFile(fileView);
-            }
+            if (file is null) return; //show error notification
+
+            var fileView = new FileViewModel(file.FileName, file.DataArray);
+            _storedFiles.Add(fileView);
+            await _homeLinkService.UploadFile(fileView);
         }
 
         public override async void OnNavigatedTo(INavigationParameters parameters) {

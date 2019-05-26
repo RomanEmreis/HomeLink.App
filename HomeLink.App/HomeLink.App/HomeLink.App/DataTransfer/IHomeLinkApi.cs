@@ -1,4 +1,5 @@
 ﻿using Refit;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -13,7 +14,8 @@ namespace HomeLink.App.DataTransfer {
         [Get("/api/files/{name}")]
         Task<HttpContent> GetStoredFile(string name);
 
+        [Multipart]
         [Post("/api/files")]
-        Task UploadFile(ByteArrayPart file);
+        Task UploadFile(IEnumerable<ByteArrayPart> files);
     }
 }

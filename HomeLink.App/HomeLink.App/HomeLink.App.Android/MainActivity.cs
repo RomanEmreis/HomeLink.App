@@ -14,8 +14,12 @@ namespace HomeLink.App.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            base.SetTheme(Android.Resource.Style.ThemeMaterialLight);
+            Window.Attributes.LayoutInDisplayCutoutMode = Android.Views.LayoutInDisplayCutoutMode.ShortEdges;
+
             base.OnCreate(bundle);
+
+            //Xamarin.Forms.Forms.SetTitleBarVisibility(this, Xamarin.Forms.AndroidTitleBarVisibility.Never);
+
             System.Net.ServicePointManager.ServerCertificateValidationCallback = delegate { return true; };
             Xamarin.Forms.Forms.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));

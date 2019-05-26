@@ -51,7 +51,9 @@ namespace HomeLink.App.DataTransfer {
         public async Task UploadFile(FileViewModel file) {
             try {
                 if (file is null || !file.HasData) throw new ArgumentException(nameof(file));
-                await _api.UploadFile(new ByteArrayPart(file.Data, file.Name)).ConfigureAwait(false);
+
+                var files = new [] { new ByteArrayPart(file.Data, file.Name) };
+                await _api.UploadFile(files).ConfigureAwait(false);
             } catch (ApiException) {
                 //TODO: show popup
             } catch (ArgumentException) {

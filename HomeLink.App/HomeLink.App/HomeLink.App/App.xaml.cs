@@ -16,7 +16,7 @@ namespace HomeLink.App {
          */
         public App() : this(null) { }
 
-        public App(IPlatformInitializer initializer) : base(initializer) { }
+        public App(IPlatformInitializer? initializer) : base(initializer) { }
 
         protected override async void OnInitialized() {
             InitializeComponent();

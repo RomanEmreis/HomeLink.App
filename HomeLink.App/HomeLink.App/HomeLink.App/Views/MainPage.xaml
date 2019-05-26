@@ -2,25 +2,30 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:controls="clr-namespace:SuaveControls.Views;assembly=SuaveControls.FloatingActionButton"
-             x:Class="HomeLink.App.Views.MainPage">
+             x:Class="HomeLink.App.Views.MainPage" Title="{Binding Title}">
 
     <ContentPage.Resources>
+        <Style x:Key="UploadButtonStyle" TargetType="controls:FloatingActionButton">
+            <Setter Property="WidthRequest" Value="100" />
+            <Setter Property="HeightRequest" Value="110" />
+            <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+            <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+            <Setter Property="ImageSource">
+                <Setter.Value>
+                    <Image Source="upload.png"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <DataTemplate x:Key="FileViewTemplate">
             <ViewCell>
                 <Label Margin="5" Text="{Binding Name}" VerticalTextAlignment="Center" FontSize="Medium" />
             </ViewCell>
         </DataTemplate>
     </ContentPage.Resources>
-    
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <ListView ItemsSource="{Binding StoredFiles}" ItemTemplate="{StaticResource FileViewTemplate}"/>
-        <controls:FloatingActionButton 
-            WidthRequest="100"
-            HeightRequest="100"
-            Command="{Binding UploadCommand}" 
-            Text="+"
-            HorizontalOptions="CenterAndExpand" 
-            VerticalOptions="CenterAndExpand"/>
+        <controls:FloatingActionButton Style="{StaticResource UploadButtonStyle}" Command="{Binding UploadCommand}"/>
     </StackLayout>
 
 </ContentPage>
